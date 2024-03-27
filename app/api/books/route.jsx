@@ -1,4 +1,4 @@
-import Book from "../models/mongodb";
+import Book from "../../models/mongodb";
 import { NextResponse } from "next/server";
 
 export async function GET() {
@@ -13,6 +13,7 @@ export async function GET() {
 }
 
 export async function POST(req) {
+  console.log('book done')
   try {
     const body = await req.json();
     const bookData = body.formData;
