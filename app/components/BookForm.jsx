@@ -9,8 +9,8 @@ const EditBookForm = ({ book }) => {
   const startingBookData = {
     author: "",
     title: "",
-    description: "",
-    category: "",
+    // description: "",
+    // category: "",
     // series: '',
     // seriesNumber: '',
   };
@@ -69,10 +69,7 @@ const EditBookForm = ({ book }) => {
 
     const response = await fetch("/api/books", {
       method: "POST",
-      body: JSON.stringify({
-        author,
-        title
-       }),
+      body: JSON.stringify({ formData}),
       //@ts-ignore
       "Content-Type": "application/json",
     });
