@@ -11,7 +11,7 @@ const Nav
         <Link href="/">
           <FontAwesomeIcon icon={faHome} className="icon" />
         </Link>
-        <Link href="/MyBooks">
+        <Link href="/books">
           <FontAwesomeIcon icon={faBook} className="icon" />
         </Link>
       </div>

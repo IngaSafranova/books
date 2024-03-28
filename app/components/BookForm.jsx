@@ -4,13 +4,13 @@ import React, { useState } from "react";
 
 const EditBookForm = ({ book }) => {
   // const EDITMODE = book._id === "new" ? false : true;
-    const router = useRouter();
-    
+  const router = useRouter();
+
   const startingBookData = {
-    author: '',
-    title: '',
-    description: '',
-    category:'',
+    author: "",
+    title: "",
+    description: "",
+    category: "",
     // series: '',
     // seriesNumber: '',
   };
@@ -38,7 +38,8 @@ const EditBookForm = ({ book }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    console.log(JSON.stringify(formData));
+    const { author, title } = formData;
     // if (EDITMODE) {
     //   const res = await fetch(`/api/Books/${book._id}`, {
     //     method: "PUT",
@@ -51,22 +52,39 @@ const EditBookForm = ({ book }) => {
     //     throw new Error("Failed to update book");
     //   }
     // } else {
-      const res = await fetch("/api/books", {
-        method: "POST",
-        body: JSON.stringify({ formData }),
-        //@ts-ignore
-        "Content-Type": "application/json",
-      });
-      if (!res.ok) {
-        throw new Error("Failed to create book");
-      }
+
+    // sending form data to backend
+    const res = await fetch("/api/database", {
+      method: "POST",
+      body: JSON.stringify({ formData }),
+      //@ts-ignore
+      "Content-Type": "application/json",
+    });
+    if (!res.ok) {
+      throw new Error("Failed to create book");
+    }
     // }
+    const result = await res.json();
+    console.log(result);
+
+    const response = await fetch("/api/books", {
+      method: "POST",
+      body: JSON.stringify({
+        author,
+        title
+       }),
+      //@ts-ignore
+      "Content-Type": "application/json",
+    });
+    if (!response.ok) {
+      throw new Error("Failed to fetch book");
+    }
+    const data = await response.json();
+    console.log(data);
 
     router.refresh();
     router.push("/");
   };
-
-  
 
   return (
     <div className=" flex justify-center">
@@ -96,7 +114,7 @@ const EditBookForm = ({ book }) => {
           value={formData.title}
           className="text-black"
         />
-        <label>Description</label>
+        {/* <label>Description</label>
         <textarea
           id="description"
           name="description"
@@ -105,16 +123,7 @@ const EditBookForm = ({ book }) => {
           rows="5"
           className="text-black"
         />
-        <label>Category</label>
-
-        <input
-          id="category"
-          name="category"
-          type="text"
-          onChange={handleChange}
-          value={formData.category}
-          className="text-black"
-        />
+        <label>Category</label> */}
 
         <input
           type="submit"
