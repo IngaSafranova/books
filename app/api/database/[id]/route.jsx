@@ -1,7 +1,7 @@
-import Book from "@/app/models/mongodb";
+import Book from "@/app/models/books";
 import { NextResponse } from "next/server";
 
-export async function GET(request, { params }) {
+export async function GET(req, { params }) {
   const { id } = params;
 
   const foundBook = await Book.findOne({ _id: id });

@@ -111,6 +111,7 @@ const EditBookForm = ({ book }) => {
           value={formData.title}
           className="text-black"
         />
+        
         {/* <label>Description</label>
         <textarea
           id="description"
