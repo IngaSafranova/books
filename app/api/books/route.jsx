@@ -26,19 +26,26 @@ export async function POST(req) {
       `https://openlibrary.org/search.json?q=${queryString}`
     );
     const book = await response.json();
-    //console.log(book.docs[0].isbn)
-    const isbnNumber = book.docs[0].isbn[0]
-    console.log(isbnNumber)
-    const res = await fetch(
-      `https://covers.openlibrary.org/b/isbn/${isbnNumber}-M.jpg`
+    const isbnNumber = book.docs[0].isbn[0];
+    console.log(isbnNumber);
+
+  const res = await fetch(
+    `https://covers.openlibrary.org/b/isbn/${isbnNumber}-M.jpg`
     );
-    const cover = await res.json()
-    return NextResponse.json({ cover }, { status: 200 });
+    const cover = await res.blob()
+console.log(cover)
+    const imageUrl = URL.createObjectURL(cover);
+    const imageWidth = cover.width;
+    const imageHeight = cover.height;
+    cover.src = imageUrl
+    return NextResponse.json({imageUrl, imageWidth, imageHeight}, {status:200})
   } catch (err) {
     console.log(err);
     return NextResponse.json({ message: "Error", err }, { status: 500 });
   }
 }
+
+
 
 // export async function GET(req) {
 //   try {

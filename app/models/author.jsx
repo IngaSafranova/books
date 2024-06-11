@@ -22,6 +22,6 @@ const authorSchema = new Schema(
   }
 );
 
-const Author = mongoose.models.Book || mongoose.model("Author", authorSchema);
+const Author = mongoose.models.Author || mongoose.model("Author", authorSchema);
 
-export default Book;
+export default Author;
