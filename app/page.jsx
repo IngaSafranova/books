@@ -1,18 +1,25 @@
-import { POST } from "./api/books/route"
+
 import Image from "next/image";
+import { NextResponse } from "next/server";
 
 
 export default async function Home() {
-  const coverData = await POST()
-  const cover = coverData;
-  console.log(cover)
-  
+  // const coverData = fetchCover(req);
+  // const cover = await coverData;
+  //console.log(isbnNumber);
+  //const book = await Promise.all(POST());
+  // const isbnNumber = book.docs[0].isbn[0];
+  //console.log(book);
+
   return (
     <>
       <h1>My Books page</h1>
-      <Image src={cover.imageUrl} alt='' width={cover.imageWidth}
-      height={cover.imageHeight} />
+      {/* <Image
+        src={`https://covers.openlibrary.org/b/isbn/9780230753181-M.jpg`}
+        alt=""
+        width={400}
+        height={400}
+      /> */}
     </>
   );
-  
 }
