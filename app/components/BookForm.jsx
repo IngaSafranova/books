@@ -2,7 +2,6 @@
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-
 const EditBookForm = ({ book }) => {
   // const EDITMODE = book._id === "new" ? false : true;
   const router = useRouter();
@@ -10,9 +9,9 @@ const EditBookForm = ({ book }) => {
   const startingBookData = {
     author: "",
     title: "",
-    cover: ''
-    // description: "",
-    // category: "",
+    cover: "",
+    description: "",
+    category: "",
     // series: '',
     // seriesNumber: '',
   };
@@ -69,22 +68,11 @@ const EditBookForm = ({ book }) => {
     const result = await res.json();
     console.log(result);
 
-    // const response = await fetch("/api/books", {
-    //   method: "POST",
-    //   body: JSON.stringify({ formData}),
-    //   //@ts-ignore
-    //   "Content-Type": "application/json",
-    // });
-    // if (!response.ok) {
-    //   throw new Error("Failed to fetch book");
-    // }
-    // const data = await response.json();
-  //console.log(data);
 
     router.refresh();
-  router.push("/");
+    router.push("/");
   };
- 
+
   return (
     <div className=" flex justify-center">
       <form
@@ -114,7 +102,7 @@ const EditBookForm = ({ book }) => {
           className="text-black"
         />
 
-        {/* <label>Description</label>
+        <label>Description</label>
         <textarea
           id="description"
           name="description"
@@ -123,7 +111,16 @@ const EditBookForm = ({ book }) => {
           rows="5"
           className="text-black"
         />
-        <label>Category</label> */}
+        <label>Category</label>
+        <input
+          id="category"
+          name="category"
+          type="text"
+          onChange={handleChange}
+          value={formData.category}
+          className="text-black"
+        />
+
         <label>Cover</label>
 
         <input

@@ -6,9 +6,9 @@ import { NextResponse } from "next/server";
 export async function GET() {
   
   try {
-    const tickets = await Book.find();
-
-    return NextResponse.json({ tickets }, { status: 200 });
+    const books = await Book.find();
+console.log(books)
+    return NextResponse.json({ books }, { status: 200 });
   } catch (err) {
     console.log(err);
     return NextResponse.json({ message: "Error", err }, { status: 500 });
@@ -35,10 +35,15 @@ export async function POST(req) {
     );
     const book = await response.json();
    
-    const isbnNumber = book.docs[0].isbn[0];
+    const isbnNumber = book?.docs[0]?.isbn[0];
     console.log(isbnNumber);
-    
-    const coverUrl = `https://covers.openlibrary.org/b/isbn/${isbnNumber}-M.jpg`;
+     let coverUrl;
+    if (!isbnNumber) {
+     coverUrl = ''
+    } else {
+  coverUrl = `https://covers.openlibrary.org/b/isbn/${isbnNumber}-M.jpg`;
+    }
+   
 
     bookData.cover = coverUrl;
     console.log(bookData)

@@ -1,11 +1,11 @@
 import React from 'react';
-import EditBookForm from '../components/BookForm';
+
 
 const MyBooks
  = () => {
   return (
     <div>
-      <EditBookForm/>
+      <h1>My Book</h1>
     </div>
   )
 }
