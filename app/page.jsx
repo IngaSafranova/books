@@ -30,7 +30,7 @@ export default async function Dashboard() {
 
   return (
     <>
-      <h1>My Books</h1>
+      <h1 className="pt-10 text-center text-4xl lg:text-6xl font-serif font-bold">My Books</h1>
       <div className="p-5">
         <div>
           {books &&
