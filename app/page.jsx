@@ -23,20 +23,20 @@ export default async function Dashboard() {
     return <p> No Books available...</p>
   }
   const books = data.books;
-  console.log(books)
+  //console.log(books)
   const uniqueCategories = [
     ...new Set(books?.map(({category})=> category))
   ]
 
   return (
     <>
-      <h1 className="pt-10 text-center text-4xl lg:text-6xl font-serif font-bold">My Books</h1>
-      <div className="p-5">
-        <div>
+      <h1 className="py-10 text-center text-4xl lg:text-6xl font-serif font-bold">My Books</h1>
+      <div className=" w-screen h-full">
+        <div className="w-screen h-full mx-auto">
           {books &&
             uniqueCategories?.map((uniqueCategory, categoryIndex) => (
-              <div key={categoryIndex} className="mb-4">
-                <h2>{uniqueCategory}</h2>
+              <div key={categoryIndex} className="mb-4 ml-4 w-fit">
+                <h2 className="uppercase font-medium">{uniqueCategory}</h2>
                 <div className="lg:grid grid-cols-2 xl:grid-cols-4 ">
                   {books.filter((book) => book.category === uniqueCategory)
                     .map((filteredBook, _index) => (

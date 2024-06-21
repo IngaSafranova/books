@@ -22,6 +22,9 @@ module.exports = {
         "blue-accent": "#0084d4",
         "blue-accent-hover": "#009fff",
       },
+      width: {
+        500: '500px'
+      }
     },
   },
   plugins: [],
