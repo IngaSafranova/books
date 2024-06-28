@@ -11,9 +11,11 @@ const EditBookForm = ({ book }) => {
     title: "",
     cover: "",
     description: "",
+    mainCharacter: '',
     category: "",
-    // series: '',
-    // seriesNumber: '',
+    isbn: '',
+     series: '',
+     seriesNumber: '',
   };
 
   // if (EDITMODE) {
@@ -39,7 +41,7 @@ const EditBookForm = ({ book }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(JSON.stringify(formData));
+    //console.log(JSON.stringify(formData));
     const { author, title, cover } = formData;
     // if (EDITMODE) {
     //   const res = await fetch(`/api/Books/${book._id}`, {
@@ -66,7 +68,7 @@ const EditBookForm = ({ book }) => {
     }
     // }
     const result = await res.json();
-    console.log(result);
+    //console.log(result);
 
 
     router.refresh();
@@ -74,71 +76,111 @@ const EditBookForm = ({ book }) => {
   };
 
   return (
-    <div className=" flex justify-center">
-      <form
-        onSubmit={handleSubmit}
-        method="post"
-        className="flex flex-col gap-3 w-1/2"
-      >
-        {/* <h3>{EDITMODE ? "Update Your Ticket" : "Create New Ticket"}</h3> */}
-        <label>Author</label>
-        <input
-          id="author"
-          name="author"
-          type="text"
-          onChange={handleChange}
-          required={true}
-          value={formData.author}
-          className="text-black"
-        />
-        <label>Title</label>
+    <>
+      <div className=" flex justify-center">
+        <form
+          onSubmit={handleSubmit}
+          method="post"
+          className="flex flex-col gap-3 w-1/2"
+        >
+          {/* <h3>{EDITMODE ? "Update Your Ticket" : "Create New Ticket"}</h3> */}
+          <label>Author</label>
+          <input
+            id="author"
+            name="author"
+            type="text"
+            onChange={handleChange}
+            required={true}
+            value={formData.author}
+            className="text-black"
+          />
+          <label>Title</label>
 
-        <input
-          id="title"
-          name="title"
-          type="text"
-          onChange={handleChange}
-          value={formData.title}
-          className="text-black"
-        />
+          <input
+            id="title"
+            name="title"
+            type="text"
+            onChange={handleChange}
+            value={formData.title}
+            required={true}
+            className="text-black"
+          />
+          <label>Main Character</label>
+          <input
+            id="mainCharacter"
+            name="mainCharacter"
+            type="text"
+            onChange={handleChange}
+            value={formData.mainCharacter}
+            className="text-black"
+          />
+          <label>Description</label>
+          <textarea
+            id="description"
+            name="description"
+            onChange={handleChange}
+            value={formData.description}
+            rows="5"
+            className="text-black"
+          />
+          <label>Category</label>
+          <input
+            id="category"
+            name="category"
+            type="text"
+            onChange={handleChange}
+            value={formData.category}
+            className="text-black"
+          />
+          <label>Isbn Number</label>
 
-        <label>Description</label>
-        <textarea
-          id="description"
-          name="description"
-          onChange={handleChange}
-          value={formData.description}
-          rows="5"
-          className="text-black"
-        />
-        <label>Category</label>
-        <input
-          id="category"
-          name="category"
-          type="text"
-          onChange={handleChange}
-          value={formData.category}
-          className="text-black"
-        />
+          <input
+            id="isbn"
+            name="isbn"
+            type="number"
+            onChange={handleChange}
+            value={formData.isbn}
+            className="text-black"
+          />
+          <label>Cover</label>
 
-        <label>Cover</label>
+          <input
+            id="cover"
+            name="cover"
+            type="text"
+            onChange={handleChange}
+            value={formData.cover}
+            className="text-black"
+          />
+          <label>Series</label>
 
-        <input
-          id="cover"
-          name="cover"
-          type="text"
-          onChange={handleChange}
-          value={formData.cover}
-          className="text-black"
-        />
-        <input
-          type="submit"
-          className="btn max-w-xs"
-          // value={EDITMODE ? "Update Ticket" : "Create Ticket"}
-        />
-      </form>
-      {/* <Image src={data.imageUrl} alt='' width={400} height={400}/> */}
-    </div>
+          <input
+            id="series"
+            name="series"
+            type="text"
+            onChange={handleChange}
+            value={formData.series}
+            className="text-black"
+          />
+          <label>Series Number</label>
+
+          <input
+            id="seriesNumber"
+            name="seriesNumber"
+            type="number"
+            onChange={handleChange}
+            value={formData.seriesNumber}
+            className="text-black"
+          />
+          <input
+            type="submit"
+            className="btn max-w-xs"
+            // value={EDITMODE ? "Update Ticket" : "Create Ticket"}
+          />
+        </form>
+        {/* <Image src={data.imageUrl} alt='' width={400} height={400}/> */}
+      </div>
+    </>
   );
 };
 

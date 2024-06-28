@@ -1,13 +1,10 @@
 import Book from "../../models/books";
 import { NextResponse } from "next/server";
 
-
-
 export async function GET() {
-  
   try {
     const books = await Book.find();
-console.log(books)
+    //console.log(books);
     return NextResponse.json({ books }, { status: 200 });
   } catch (err) {
     console.log(err);
@@ -16,38 +13,43 @@ console.log(books)
 }
 
 export async function POST(req) {
-
-  
   try {
     const body = await req.json();
-   let  bookData = body.formData;
-    console.log(bookData)
-    
+    let bookData = body.formData;
+    //console.log(bookData);
+
     const queryParams = {
       author: bookData.author,
       title: bookData.title,
-      orderBy: "relevance",
+      isbn: bookData.isbn,
     };
     const queryString = new URLSearchParams(queryParams).toString();
     console.log(queryString);
     const response = await fetch(
-      `https://openlibrary.org/search.json?q=${queryString}`
+      `https://www.googleapis.com/books/v1/volumes?q=${queryString}`
     );
     const book = await response.json();
-   
-    const isbnNumber = book?.docs[0]?.isbn[0];
-    console.log(isbnNumber);
-     let coverUrl;
-    if (!isbnNumber) {
-     coverUrl = ''
-    } else {
-  coverUrl = `https://covers.openlibrary.org/b/isbn/${isbnNumber}-M.jpg`;
-    }
-   
+    //   const publisher = book.items[0]
+    console.log(book);
+    const coverUrl = book.items[0].volumeInfo.imageLinks.thumbnail;
+    console.log(coverUrl);
 
-    bookData.cover = coverUrl;
-    console.log(bookData)
+    // const res = await fetch(
+    //   `https://www.googleapis.com/books/v1/volumes?q=${bookId}`
+    // );
+    // const bookDetails = await res.json();
+    // console.log(bookDetails)
+    // const isbnNumber = bookData.isbn;
+    // console.log(isbnNumber);
+    // let coverUrl;
+    // if (!isbnNumber) {
+    //   coverUrl = "";
+    // } else {
+    //   coverUrl = `https://covers.openlibrary.org/b/isbn/${isbnNumber}-M.jpg`;
+    // }
 
+     bookData.cover = coverUrl;
+    //console.log(bookData);
 
     await Book.create(bookData);
 
