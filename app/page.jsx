@@ -1,5 +1,5 @@
 
-import { NextResponse } from "next/server";
+
 import BookCard from "./components/BookCard";
 
 export async function getBooks() {
