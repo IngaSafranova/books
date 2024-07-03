@@ -5,7 +5,7 @@ import BookCard from "./components/BookCard";
 export async function getBooks() {
   try {
     const response = await fetch("http://localhost:3000/api/database", {
-      cache: "no-cache",
+      
     });
     return response.json();
   } catch (error) {
@@ -15,9 +15,9 @@ export async function getBooks() {
 
 export default async function Dashboard() {
   const data = await getBooks();
-//console.log(data)
-  const books = data.books;
 
+  const books = data.books;
+console.log(books);
   //if no books available
   if (!books) {
     return <p> No Books available...</p>;
