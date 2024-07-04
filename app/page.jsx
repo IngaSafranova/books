@@ -1,16 +1,29 @@
 
+import Book from "./models/books";
 
 import BookCard from "./components/BookCard";
 
+// export async function getBooks() {
+//   try {
+//     const response = await fetch(
+//       "http://localhost:3000/api/database",
+//       {}
+//     );
+//     return response.json();
+//   } catch (error) {
+//     console.log("Failed to get books", error);
+//   }
+// }
+
 export async function getBooks() {
   try {
-    const response = await fetch(
-      "https://books-ten-jade.vercel.app/api/database",
-      {}
-    );
-    return response.json();
+    const books = await Book.find();
+    return {
+      books: JSON.parse(JSON.stringify(books))
+    }
   } catch (error) {
-    console.log("Failed to get books", error);
+    console.log(error)
+    
   }
 }
 
@@ -18,7 +31,7 @@ export default async function Dashboard() {
   const data = await getBooks();
 
   const books = data.books;
-console.log(books);
+
   //if no books available
   if (!books) {
     return <p> No Books available...</p>;
