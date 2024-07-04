@@ -4,7 +4,7 @@ import BookCard from "./components/BookCard";
 
 export async function getBooks() {
   try {
-    const response = await fetch("http://localhost:3000/api/database/route.jsx", {});
+    const response = await fetch("http://localhost:3000/api/database", {});
     return response.json();
   } catch (error) {
     console.log("Failed to get books", error);
