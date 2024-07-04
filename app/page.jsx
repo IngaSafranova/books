@@ -14,7 +14,7 @@ import BookCard from "./components/BookCard";
 //     console.log("Failed to get books", error);
 //   }
 // }
-
+export const revalidate = 300;
 export async function getBooks() {
   try {
     const books = await Book.find();
