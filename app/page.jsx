@@ -4,7 +4,10 @@ import BookCard from "./components/BookCard";
 
 export async function getBooks() {
   try {
-    const response = await fetch("http://localhost:3000/api/database", {});
+    const response = await fetch(
+      "https://books-ten-jade.vercel.app/api/database",
+      {}
+    );
     return response.json();
   } catch (error) {
     console.log("Failed to get books", error);
