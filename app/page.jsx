@@ -2,6 +2,7 @@
 import Book from "./models/books";
 
 import BookCard from "./components/BookCard";
+import DeleteBlock from "./components/DeleteButton";
 
 // export async function getBooks() {
 //   try {
@@ -54,7 +55,14 @@ export default async function Dashboard() {
                   {books
                     .filter((book) => book.category === uniqueCategory)
                     .map((filteredBook, _index) => (
-                      <BookCard id={_index} key={_index} book={filteredBook} />
+                      <>
+                        <BookCard
+                          id={_index}
+                          key={_index}
+                          book={filteredBook}
+                        />
+                       
+                      </>
                     ))}
                 </div>
               </div>
