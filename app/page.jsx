@@ -51,7 +51,7 @@ export default async function Dashboard() {
             uniqueCategories?.map((uniqueCategory, categoryIndex) => (
               <div key={categoryIndex} className="mb-4 ml-4 w-fit">
                 <h2 className="uppercase font-medium">{uniqueCategory}</h2>
-                <div className="lg:grid grid-cols-2 xl:grid-cols-4 ">
+                <div className="flex flex-col mx-auto w-screen h-fit lg:grid grid-cols-2 xl:grid-cols-2 ">
                   {books
                     .filter((book) => book.category === uniqueCategory)
                     .map((filteredBook, _index) => (
