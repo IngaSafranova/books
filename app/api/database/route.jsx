@@ -1,4 +1,4 @@
-import Book from "../../models/books";
+import Book from "../../lib/books";
 import { NextResponse } from "next/server";
 
 export async function GET() {
@@ -39,7 +39,7 @@ export async function POST(req) {
     // );
     // const bookDetails = await res.json();
     // console.log(bookDetails)
-     const isbnNumber = bookData.isbn;
+    const isbnNumber = bookData.isbn;
     // console.log(isbnNumber);
     let coverUrl;
     if (!isbnNumber) {
@@ -48,7 +48,7 @@ export async function POST(req) {
       coverUrl = `https://covers.openlibrary.org/b/isbn/${isbnNumber}-M.jpg`;
     }
 
-     bookData.cover = coverUrl;
+    bookData.cover = coverUrl;
     //console.log(bookData);
 
     await Book.create(bookData);

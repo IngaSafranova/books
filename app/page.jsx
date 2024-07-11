@@ -1,8 +1,6 @@
-
-import Book from "./models/books";
+import Book from "./lib/books";
 
 import BookCard from "./components/BookCard";
-
 
 // export async function getBooks() {
 //   try {
@@ -20,11 +18,10 @@ export async function getBooks() {
   try {
     const books = await Book.find();
     return {
-      books: JSON.parse(JSON.stringify(books))
-    }
+      books: JSON.parse(JSON.stringify(books)),
+    };
   } catch (error) {
-    console.log(error)
-    
+    console.log(error);
   }
 }
 
@@ -56,12 +53,13 @@ export default async function Dashboard() {
                     .filter((book) => book.category === uniqueCategory)
                     .map((filteredBook, _index) => (
                       <>
-                        <BookCard
-                          id={_index}
-                          key={_index}
-                          book={filteredBook}
-                        />
-                       
+                        
+                          <BookCard
+                            id={_index}
+                            key={_index}
+                            book={filteredBook}
+                          />
+                        
                       </>
                     ))}
                 </div>
