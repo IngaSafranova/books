@@ -3,7 +3,7 @@
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/navigation";
-import Book from "../lib/books";
+import Book from "../models/books";
 
 const DeleteBlock = ({ id }) => {
   const router = useRouter();

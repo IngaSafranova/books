@@ -1,4 +1,4 @@
-import Book from "./lib/books";
+import Book from "./models/books";
 
 import BookCard from "./components/BookCard";
 
@@ -53,13 +53,11 @@ export default async function Dashboard() {
                     .filter((book) => book.category === uniqueCategory)
                     .map((filteredBook, _index) => (
                       <>
-                        
-                          <BookCard
-                            id={_index}
-                            key={_index}
-                            book={filteredBook}
-                          />
-                        
+                        <BookCard
+                          id={_index}
+                          key={_index}
+                          book={filteredBook}
+                        />
                       </>
                     ))}
                 </div>

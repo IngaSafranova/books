@@ -1,4 +1,4 @@
-import Book from "@/app/lib/books";
+import Book from "@/app/models/books";
 import { NextResponse } from "next/server";
 
 export async function GET(req, { params }) {

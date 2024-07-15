@@ -11,11 +11,11 @@ const EditBookForm = ({ book }) => {
     title: "",
     cover: "",
     description: "",
-    mainCharacter: '',
+    mainCharacter: "",
     category: "",
-    isbn: '',
-     series: '',
-     seriesNumber: '',
+    isbn: "",
+    series: "",
+    seriesNumber: "",
   };
 
   // if (EDITMODE) {
@@ -69,7 +69,6 @@ const EditBookForm = ({ book }) => {
     // }
     const result = await res.json();
     //console.log(result);
-
 
     router.refresh();
     router.push("/");
@@ -178,7 +177,7 @@ const EditBookForm = ({ book }) => {
             // value={EDITMODE ? "Update Ticket" : "Create Ticket"}
           />
         </form>
-        {/* <Image src={data.imageUrl} alt='' width={400} height={400}/> */}
+       
       </div>
     </>
   );

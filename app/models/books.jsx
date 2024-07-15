@@ -26,6 +26,7 @@ import mongoose, { Schema } from "mongoose";
       isbn: String,
       series: Boolean,
       seriesNumber: Number,
+      seriesName: String,
     },
     {
       timestamps: true,
