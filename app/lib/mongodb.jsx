@@ -1,6 +1,6 @@
 // import { MongoClient, ServerApiVersion } from "mongodb";
 
-//const { Connection } = require("mongoose")
+// const { Connection } = require("mongoose")
 
 // if (!process.env.MONGODB_URI) {
 //   throw new Error('Invalid/Missing environment variable: "MONGODB_URI"');
