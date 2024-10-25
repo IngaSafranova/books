@@ -1,18 +1,22 @@
+
+
+
+
 import Book from "./models/books";
 
 import BookCard from "./components/BookCard";
 
-// export async function getBooks() {
-//   try {
-//     const response = await fetch(
-//       "http://localhost:3000/api/database",
-//       {}
-//     );
-//     return response.json();
-//   } catch (error) {
-//     console.log("Failed to get books", error);
-//   }
-// }
+// // export async function getBooks() {
+// //   try {
+// //     const response = await fetch(
+// //       "http://localhost:3000/api/database",
+// //       {}
+// //     );
+// //     return response.json();
+// //   } catch (error) {
+// //     console.log("Failed to get books", error);
+// //   }
+// // }
 export const revalidate = 300;
 export async function getBooks() {
   try {
@@ -53,11 +57,13 @@ export default async function Dashboard() {
                     .filter((book) => book.category === uniqueCategory)
                     .map((filteredBook, _index) => (
                       <>
-                        <BookCard
-                          id={_index}
-                          key={_index}
-                          book={filteredBook}
-                        />
+                        <div key={_index}>
+                          <BookCard
+                            id={_index}
+                            key={_index}
+                            book={filteredBook}
+                          />
+                        </div>
                       </>
                     ))}
                 </div>

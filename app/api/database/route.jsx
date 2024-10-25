@@ -1,7 +1,10 @@
 import Book from "@/app/models/books";
 import { NextResponse } from "next/server";
+import { connectToMongoDB } from "@/app/lib/mongodb";
+
 
 export async function GET() {
+  connectToMongoDB()
   try {
     const books = await Book.find();
     //console.log(books);
@@ -11,6 +14,20 @@ export async function GET() {
     return NextResponse.json({ message: "Error", err }, { status: 500 });
   }
 }
+
+// export async function getBooks() {
+//   connectToMongoDB()
+//   try {
+    
+//     const books = await Book.find({}).toArray();
+//    return NextResponse.json({ books }, { status: 200 });
+    
+
+
+//   } catch (error) {
+//     console.error(error)
+//   }
+// }
 
 export async function POST(req) {
   try {
