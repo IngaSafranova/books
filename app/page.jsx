@@ -47,6 +47,7 @@ export default async function Dashboard() {
                   {books
                     .filter((book) => book.category === uniqueCategory)
                     .map((filteredBook, _index) => (
+                    
                       <>
                         <div key={_index}>
                           <BookCard
@@ -56,7 +57,7 @@ export default async function Dashboard() {
                           />
                         </div>
                       </>
-                    ))}
+            ))}
                 </div>
               </div>
             ))}
