@@ -3,8 +3,10 @@
 import Book from "../models/books";
 import { revalidatePath } from "next/cache";  
 import { connectToMongoDB } from "../lib/mongodb";
+import {ObjectId} from 'mongodb'
 
 export async function createBook(formData) {
+  console.log(formData)
   await connectToMongoDB();
   const author = formData.author
   const title = formData.title
@@ -45,4 +47,13 @@ export async function getBooks() {
   } catch (error) {
     console.log(error);
   }
+}
+export async function deleteBook(formData) {
+  await connectToMongoDB();
+  const {id} = formData
+  
+  const deleteBook = await Book.findOneAndDelete({ _id: ObjectId.createFromHexString(formData) })
+  console.log(formData)
+  revalidatePath('/')
+  
 }
