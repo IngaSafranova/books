@@ -3,7 +3,7 @@
 
 
 import Book from "./models/books";
-
+import { getBooks } from "./actions/actions";
 import BookCard from "./components/BookCard";
 
 // // export async function getBooks() {
@@ -18,16 +18,7 @@ import BookCard from "./components/BookCard";
 // //   }
 // // }
 export const revalidate = 300;
-export async function getBooks() {
-  try {
-    const books = await Book.find();
-    return {
-      books: JSON.parse(JSON.stringify(books)),
-    };
-  } catch (error) {
-    console.log(error);
-  }
-}
+
 
 export default async function Dashboard() {
   const data = await getBooks();

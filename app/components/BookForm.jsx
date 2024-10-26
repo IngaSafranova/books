@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { createBook } from "../actions/actions";
 import Book from "../models/books";
 
 // export async function getBooks() {
@@ -14,14 +15,15 @@ import Book from "../models/books";
 //   }
 // }
 
-const EditBookForm =  ({book}) => {
+const CreateBook = () => {
+
   
 
   
 
  // const EDITMODE = book._id.toString() === "new" ? false : true;
   const router = useRouter();
-
+              // FOR EDIT BOOK
   const startingBookData = {
     author: "",
     title: "",
@@ -33,7 +35,7 @@ const EditBookForm =  ({book}) => {
     series: "",
     seriesNumber: "",
   };
-
+const [formData, setFormData] = useState(startingBookData);
   // if (EDITMODE) {
   //   startingBookData["title"] = book.title;
   //   startingBookData["description"] = book.description;
@@ -42,8 +44,8 @@ const EditBookForm =  ({book}) => {
   //   startingBookData["seriesNumber"] = book.seriesNumber;
   //   startingBookData["category"] = book.category;
   // }
-
-  const [formData, setFormData] = useState(startingBookData);
+        // FOR EDIT BOOK
+  
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -57,8 +59,21 @@ const EditBookForm =  ({book}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const { author, title, cover } = formData;
+      createBook(formData);
+      setFormData('')
+
+        
+    } catch (e) {
+      console.log(e)
+    }
+    
+    router.refresh();
+    router.push("/");
+  }
     //console.log(JSON.stringify(formData));
-    const { author, title, cover } = formData;
+    
     // if (EDITMODE) {
     //   const res = await fetch(`/api/Books/${book._id}`, {
     //     method: "PUT",
@@ -74,29 +89,27 @@ const EditBookForm =  ({book}) => {
     //else {
 
       // sending form data to backend
-      const res = await fetch("/api/database", {
-        method: "POST",
-        body: JSON.stringify({ formData }),
-        //@ts-ignore
-        "Content-Type": "application/json",
-      });
-      if (!res.ok) {
-        throw new Error("Failed to create book");
-      }
+      // const res = await fetch("/api/database", {
+      //   method: "POST",
+      //   body: JSON.stringify({ formData }),
+      //   //@ts-ignore
+      //   "Content-Type": "application/json",
+      // });
+      // if (!res.ok) {
+      //   throw new Error("Failed to create book");
       // }
-      const result = await res.json();
+      // // }
+      // const result = await res.json();
       //console.log(result);
 
-      router.refresh();
-      router.push("/");
-    };
+    //};
 
     return (
       <>
         <div className=" flex justify-center">
           <form
             onSubmit={handleSubmit}
-            method="post"
+            //method="post"
             className="flex flex-col gap-3 w-1/2"
           >
             {/* <h3>{EDITMODE ? "Update Your Ticket" : "Create New Ticket"}</h3> */}
@@ -200,4 +213,4 @@ const EditBookForm =  ({book}) => {
     );
   //};
 }
-export default EditBookForm;
+export default CreateBook;
