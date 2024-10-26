@@ -2,7 +2,7 @@
 
 import Book from "../models/books";
 import { revalidatePath } from "next/cache";  
-import { connectToMongoDB } from "./mongodb";
+import { connectToMongoDB } from "../lib/mongodb";
 
 export async function createBook(formData) {
   await connectToMongoDB();
@@ -35,4 +35,14 @@ export async function createBook(formData) {
     
 }
       
+}
+export async function getBooks() {
+  try {
+    const books = await Book.find();
+    return {
+      books: JSON.parse(JSON.stringify(books)),
+    };
+  } catch (error) {
+    console.log(error);
+  }
 }
