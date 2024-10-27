@@ -2,7 +2,8 @@
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { createBook } from "../actions/actions";
-import Book from "../models/books";
+
+
 
 // export async function getBooks() {
 //   try {
@@ -61,7 +62,7 @@ const [formData, setFormData] = useState(startingBookData);
     e.preventDefault();
     try {
       const { author, title, cover } = formData;
-      createBook(formData);
+    createBook(formData);
       setFormData('')
 
         

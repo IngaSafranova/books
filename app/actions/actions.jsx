@@ -19,7 +19,7 @@ export async function createBook(formData) {
   const seriesName = formData.seriesName
   let coverUrl;
     if (!isbn) {
-      coverUrl = "";
+      coverUrl = null;
     } else {
       coverUrl = `https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg`;
     }
