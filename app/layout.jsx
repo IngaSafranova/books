@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
         <div className="flex flex-col h-screen max-h-screen">
           <Nav />
 
-          <div className=" w-10/12 mx-auto flex-grow overflow-y-auto  text-default-text">
+          <div className="  mx-auto flex-grow overflow-y-auto  text-default-text">
             {children}
           </div>
         </div>
