@@ -15,11 +15,17 @@ const nextConfig = {
         pathname: "/books/v1/volumes/**",
       },
       {
-        protocol: 'http',
-        hostname: 'books.google.com',
-        port: '',
-        pathname: '/books/**'
-      }
+        protocol: "http",
+        hostname: "books.google.com",
+        port: "",
+        pathname: "/books/**",
+      },
+      {
+        protocol: "http",
+        hostname: "lgimages.s3.amazonaws.com",
+        port: "",
+        pathname: "/nc-md.gif",
+      },
     ],
   },
 };
