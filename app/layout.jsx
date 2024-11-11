@@ -20,12 +20,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   connectToMongoDB();
   return (
-    <html lang="en">
+    <html lang="en" className='bg-page'>
       <body className={inter.className}>
         <div className="flex flex-col h-screen max-h-screen">
           <Nav />
 
-          <div className="flex-grow overflow-y-auto bg-page text-default-text">
+          <div className="  mx-auto flex-grow overflow-y-auto  text-default-text">
             {children}
           </div>
         </div>

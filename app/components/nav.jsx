@@ -6,7 +6,7 @@ const Nav
  = () => {
    return (
      <>
-       <nav className="flex justify-between place-items-center py-16 px-4 lg:p-20 bg-gradient-to-r from-nav to-orange-300 text-white w-screen h-fit">
+       <nav className="flex justify-between place-items-center py-6 px-4 lg:p-10 bg-gradient-to-r from-nav to-orange-300 text-white w-screen h-[100px]">
          <div className="flex  flex-col lg:flex-row justify-evenly h-fit w-3/4">
            <Link href="/" className="text-4xl font-extrabold">
              My Library
