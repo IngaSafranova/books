@@ -3,11 +3,7 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import { connectToMongoDB } from './lib/mongodb';
 
-// for icons do not jump when loading.
-import { config } from "@fortawesome/fontawesome-svg-core";
-import "@fortawesome/fontawesome-svg-core/styles.css";
-
-config.autoAddCss = false;
+// for icons do not jump when loadin
 
 
 const inter = Inter({ subsets: ['latin'] })

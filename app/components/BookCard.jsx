@@ -4,11 +4,8 @@ import Image from "next/image";
 import DeleteBlock from "./DeleteButton";
 import { useState } from "react";
 import { deleteBook } from "../actions/actions";
-import { faX } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-
-export default function BookCard({book}) {
+export default function BookCard({ book }) {
   // const startingBookData = {
   //   author: "",
   //   title: "",
@@ -29,8 +26,15 @@ export default function BookCard({book}) {
   // startingBookData["category"] = book.category;
   // const [showUpdateInput, setShowUpdateInput] = useState(false);
   // const [formData, setFormData] = useState(startingBookData);
-  
+
   const altText = book.description;
+  let cover;
+  if (!book.cover) {
+    cover = "http://lgimages.s3.amazonaws.com/nc-md.gif";
+  } else {
+    cover = book.cover;
+  }
+  console.log(book.cover);
 
   return (
     <>
@@ -41,7 +45,7 @@ export default function BookCard({book}) {
         <Image
           className="w-fit h-fit"
           key={book._id}
-          src={book.cover}
+          src={cover}
           width={160}
           height={230}
           alt={altText}
@@ -56,9 +60,7 @@ export default function BookCard({book}) {
           <p className="text-base min-w-fit">{book.description}</p>
         </div>
         <div className="px-4">
-          
-            
-          <button onClick={()=> deleteBook(book._id)}>Del</button>
+          <button onClick={() => deleteBook(book._id)}>Del</button>
         </div>
       </div>
     </>
