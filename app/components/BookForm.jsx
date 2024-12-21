@@ -21,7 +21,6 @@ const CreateBook = () => {
   const startingBookData = {
     author: "",
     title: "",
-    cover: "",
     description: "",
     mainCharacter: "",
     category: "",
@@ -162,16 +161,7 @@ const CreateBook = () => {
             value={formData.isbn}
             className="text-black"
           />
-          <label>Cover</label>
 
-          <input
-            id="cover"
-            name="cover"
-            type="text"
-            onChange={handleChange}
-            value={formData.cover}
-            className="text-black"
-          />
           <label>Series</label>
 
           <input
