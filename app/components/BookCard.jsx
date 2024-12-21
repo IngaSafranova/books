@@ -27,14 +27,14 @@ export default function BookCard({ book }) {
   // const [showUpdateInput, setShowUpdateInput] = useState(false);
   // const [formData, setFormData] = useState(startingBookData);
 
-  const altText = book.description;
+  const altText = book.title;
   let cover;
   if (!book.cover) {
     cover = "http://lgimages.s3.amazonaws.com/nc-md.gif";
   } else {
     cover = book.cover;
   }
-  console.log(book.cover);
+  // console.log(book.cover);
 
   return (
     <>
